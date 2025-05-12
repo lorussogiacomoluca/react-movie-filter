@@ -2,6 +2,7 @@ import React from "react";
 import List from "./assets/list";
 
 const App = () => {
+  const movieGenres = [...new Set(List.map((movie) => movie.genre))];
   return (
     <>
       <div className="container mt-4">
@@ -14,20 +15,14 @@ const App = () => {
               </h1>
             </div>
             <div className="col">
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Cerca un film.."
-                />
-                <button
-                  className="btn btn-outline-primary"
-                  type="button"
-                  id="button-addon1"
-                >
-                  Cerca
-                </button>
-              </div>
+              <select className="form-select">
+                <option defaultValue={true}>Seleziona un genere..</option>
+                {movieGenres.map((genre, index) => (
+                  <option key={index} value="{genre}">
+                    {genre}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="row">
