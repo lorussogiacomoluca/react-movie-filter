@@ -1,5 +1,5 @@
 import React from "react";
-import List
+import List from "./assets/list";
 
 const App = () => {
   return (
