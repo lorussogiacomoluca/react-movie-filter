@@ -1,9 +1,10 @@
 import React from "react";
+import SelectForm from "./SelectForm";
 
-const Main = ({ filtredMovies }) => {
+const Main = ({ filtredMovies, newTitle, setNewTitle, addMovie }) => {
   return (
-    <div className="row">
-      <div className="col">
+    <div className="row d-flex">
+      <div className="col-8">
         <ul className="list-group">
           {filtredMovies.map((movie, index) => (
             <li
@@ -23,6 +24,26 @@ const Main = ({ filtredMovies }) => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="col-4">
+        <form onSubmit={addMovie}>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Inserisci il titolo del film"
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+            <button
+              className="btn btn-outline-primary"
+              type="submit"
+              id="button-addon2"
+            >
+              Aggiungi <i className="fa-solid fa-upload"></i>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

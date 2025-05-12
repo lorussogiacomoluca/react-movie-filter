@@ -9,11 +9,16 @@ const Header = ({
   searchTitolo,
   setSearchTitolo,
 }) => {
+  const resetHandle = () => {
+    setSearchGenere("");
+    setSearchTitolo("");
+    document.getElementById("SearchForm").value = "";
+  };
   return (
     <>
       <div className="row mb-5 text-primary">
         <div className="col">
-          <h1>
+          <h1 onClick={resetHandle}>
             <i className="fa-solid fa-film me-4"></i>
             Movie Filter
           </h1>

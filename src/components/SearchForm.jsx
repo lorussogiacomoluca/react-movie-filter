@@ -5,6 +5,7 @@ const SearchForm = ({ searchTitolo, setSearchTitolo }) => {
     <div className="col">
       <div className="input-group mb-3">
         <input
+          id="SearchForm"
           type="text"
           className="form-control"
           placeholder="Cerca un titolo.."
