@@ -5,26 +5,36 @@ import Main from "./components/Main";
 
 const App = () => {
   const movieGenres = [...new Set(List.map((movie) => movie.genre))];
-  const [search, setSearch] = useState("");
+  const [searchGenere, setSearchGenere] = useState("");
   const [filtredMovies, setFiltredMovies] = useState(List);
+  const [searchTitolo, setSearchTitolo] = useState("");
 
   useEffect(() => {
-    if (search) {
-      const filtredMovies = List.filter((movie) => movie.genre === search);
-      setFiltredMovies(filtredMovies);
-    } else {
-      setFiltredMovies(List);
+    let filtered = List;
+
+    if (searchGenere) {
+      filtered = filtered.filter((movie) => movie.genre === searchGenere);
     }
-  }, [search]);
+
+    if (searchTitolo) {
+      filtered = filtered.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTitolo.toLowerCase())
+      );
+    }
+
+    setFiltredMovies(filtered);
+  }, [searchGenere, searchTitolo]);
 
   return (
     <>
       <div className="container mt-4">
         <div>
           <Header
-            search={search}
-            setSearch={setSearch}
+            searchGenere={searchGenere}
+            setSearchGenere={setSearchGenere}
             movieGenres={movieGenres}
+            searchTitolo={searchTitolo}
+            setSearchTitolo={setSearchTitolo}
           />
           <Main filtredMovies={filtredMovies} />
         </div>

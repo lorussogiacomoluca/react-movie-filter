@@ -1,7 +1,14 @@
 import React from "react";
 import SelectForm from "./SelectForm";
+import SearchForm from "./SearchForm";
 
-const Header = ({ search, movieGenres, setSearch }) => {
+const Header = ({
+  searchGenere,
+  movieGenres,
+  setSearchGenere,
+  searchTitolo,
+  setSearchTitolo,
+}) => {
   return (
     <>
       <div className="row mb-5 text-primary">
@@ -11,9 +18,13 @@ const Header = ({ search, movieGenres, setSearch }) => {
             Movie Filter
           </h1>
         </div>
+        <SearchForm
+          searchTitolo={searchTitolo}
+          setSearchTitolo={setSearchTitolo}
+        />
         <SelectForm
-          search={search}
-          setSearch={setSearch}
+          searchGenere={searchGenere}
+          setSearchGenere={setSearchGenere}
           movieGenres={movieGenres}
         />
       </div>

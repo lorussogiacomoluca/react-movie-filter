@@ -1,12 +1,12 @@
 import React from "react";
 
-const SelectForm = ({ search, movieGenres, setSearch }) => {
+const SelectForm = ({ searchGenere, movieGenres, setSearchGenere }) => {
   return (
     <div className="col">
       <select
         className="form-select"
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
+        onChange={(e) => setSearchGenere(e.target.value)}
+        value={searchGenere}
       >
         <option defaultValue value={""}>
           Seleziona un genere..
