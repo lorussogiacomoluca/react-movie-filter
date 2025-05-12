@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import List from "./assets/List";
 
 const App = () => {
   const movieGenres = [...new Set(List.map((movie) => movie.genre))];
+  const [search, setSearch] = useState("");
+  const [filtredMovies, setFiltredMovies] = useState(List);
+
+  useEffect(() => {
+    if (search) {
+      const filtredMovies = movies.filter((movie) => movie.genre === search);
+      setFiltredMovies(filtredMovies);
+    } else {
+      setFiltredMovies(List);
+    }
+    console.log(search);
+  }, [search]);
+
   return (
     <>
       <div className="container mt-4">
@@ -15,10 +28,16 @@ const App = () => {
               </h1>
             </div>
             <div className="col">
-              <select className="form-select">
-                <option defaultValue={true}>Seleziona un genere..</option>
+              <select
+                className="form-select"
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+              >
+                <option defaultValue value={""}>
+                  Seleziona un genere..
+                </option>
                 {movieGenres.map((genre, index) => (
-                  <option key={index} value="{genre}">
+                  <option key={index} value={genre}>
                     {genre}
                   </option>
                 ))}
@@ -28,7 +47,7 @@ const App = () => {
           <div className="row">
             <div className="col">
               <ul className="list-group">
-                {List.map((movie, index) => (
+                {filtredMovies.map((movie, index) => (
                   <li key={index} className="list-group-item">
                     <div>
                       <h3 className="d-inline-block">Titolo: </h3>
