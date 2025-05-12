@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./assets/list";
+import List from "./assets/List";
 
 const App = () => {
   const movieGenres = [...new Set(List.map((movie) => movie.genre))];
@@ -28,11 +28,16 @@ const App = () => {
           <div className="row">
             <div className="col">
               <ul className="list-group">
-                <li className="list-group-item">An item</li>
-                <li className="list-group-item">A second item</li>
-                <li className="list-group-item">A third item</li>
-                <li className="list-group-item">A fourth item</li>
-                <li className="list-group-item">And a fifth one</li>
+                {List.map((movie, index) => (
+                  <li key={index} className="list-group-item">
+                    <div>
+                      <h3 className="d-inline-block">Titolo: </h3>
+                      <span>{movie.title}</span>
+                    </div>
+                    <h5 className="d-inline-block">Genere: </h5>
+                    <span>{movie.genre}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
