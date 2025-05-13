@@ -8,7 +8,7 @@ const SelectForm = ({ searchGenere, movieGenres, setSearchGenere }) => {
         onChange={(e) => setSearchGenere(e.target.value)}
         value={searchGenere}
       >
-        <option defaultValue value={""}>
+        <option defaultValue value="">
           Seleziona un genere..
         </option>
         {movieGenres.map((genre, index) => (

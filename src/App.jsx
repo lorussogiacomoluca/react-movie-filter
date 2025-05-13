@@ -11,12 +11,12 @@ const App = () => {
   const [filtredMovies, setFiltredMovies] = useState(List);
   const [searchTitolo, setSearchTitolo] = useState("");
   const [newTitle, setNewTitle] = useState("");
-
+  const [newGenere, setNewGenere] = useState("");
   const addMovie = (e) => {
     e.preventDefault();
     const title = newTitle.trim();
     if (!title) return;
-    const genre = "Azione";
+    const genre = newGenere;
     const updated = [...movies, { title, genre }];
     setMovies(updated);
     setNewTitle("");
@@ -51,6 +51,9 @@ const App = () => {
             newTitle={newTitle}
             setNewTitle={setNewTitle}
             addMovie={addMovie}
+            newGenere={newGenere}
+            setNewGenere={setNewGenere}
+            movieGenres={movieGenres}
           />
         </div>
       </div>
